@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScholarBridge | Student Scholarship Portal</title>
+<style>
+:root{--navy:#14213d;--blue:#3157d5;--pale:#eef2ff;--ink:#20283b;--muted:#697386;--line:#e7eaf1;--bg:#f7f8fc;--green:#16845b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1120px;margin:auto;padding:17px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.5px}.brand span{color:var(--blue)}
+.navlinks{display:flex;gap:24px;align-items:center}.navlinks a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600}
+.btn{border:0;border-radius:10px;background:var(--blue);color:#fff;padding:12px 17px;font-weight:700;cursor:pointer}.btn:hover{filter:brightness(.94)}
+main{max-width:1120px;margin:34px auto;padding:0 24px}
+.hero{background:linear-gradient(115deg,#17294e,#3157d5);color:#fff;border-radius:22px;padding:38px 40px;display:grid;grid-template-columns:1.4fr .8fr;gap:25px;align-items:center;overflow:hidden}
+.eyebrow{text-transform:uppercase;letter-spacing:1.5px;font-size:11px;font-weight:800;color:#c9d5ff}.hero h1{font-size:clamp(29px,4vw,43px);line-height:1.12;margin:12px 0}.hero p{color:#e0e7ff;line-height:1.65;max-width:570px;margin:0 0 22px}.hero .btn{background:#fff;color:var(--blue)}
+.hero-art{justify-self:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:28px;text-align:center;width:min(100%,245px)}
+.hero-art .cap{font-size:65px}.hero-art strong{display:block;font-size:17px;margin-top:8px}.hero-art small{color:#dbe3ff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:22px 0 34px}.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px 20px}.stat b{font-size:25px;color:var(--navy);display:block}.stat span{font-size:13px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:25px 0 16px}.section-head h2{margin:0;font-size:23px;color:var(--navy)}.section-head p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.search{flex:1;min-width:210px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit}.filter{padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;min-height:240px}.tag{display:inline-block;background:var(--pale);color:var(--blue);font-size:11px;font-weight:800;padding:6px 9px;border-radius:20px;align-self:flex-start}.card h3{font-size:17px;margin:14px 0 8px;color:var(--navy)}.card p{font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 16px}.meta{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted);margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}.card .apply{margin-top:14px;width:100%}
+.empty{grid-column:1/-1;background:#fff;padding:30px;text-align:center;border:1px dashed #cbd2e1;border-radius:14px;color:var(--muted)}
+.info{margin:32px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.info h2{margin:0 0 12px;font-size:20px;color:var(--navy)}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step b{display:block;margin-bottom:6px}.step p{font-size:13px;line-height:1.5;color:var(--muted);margin:0}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:rgba(12,20,40,.55);z-index:10;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.dialog{background:#fff;border-radius:18px;padding:25px;width:min(100%,440px);box-shadow:0 20px 60px #101a3340}.dialog h2{margin:0 0 7px;color:var(--navy)}.dialog p{color:var(--muted);font-size:13px;line-height:1.5}.dialog label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}.dialog input,.dialog select{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;font:inherit}.actions{display:flex;gap:10px;margin-top:20px}.secondary{background:#eef0f5;color:var(--ink)}#notice{display:none;margin-top:13px;padding:11px;background:#eaf8f1;color:var(--green);border-radius:9px;font-size:13px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-art{display:none}.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.navlinks a{display:none}.hero{padding:28px 23px}.stats{gap:8px}.stat{padding:14px}.stat b{font-size:20px}.cards,.steps{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}main{padding:0 16px}}
+</style>
+</head>
+<body>
+<header><nav class="nav"><div class="brand">Scholar<span>Bridge</span></div><div class="navlinks"><a href="#scholarships">Scholarships</a><a href="#how">How it works</a><a href="#about">About</a><button class="btn" onclick="document.getElementById('scholarships').scrollIntoView({behavior:'smooth'})">Explore now</button></div></nav></header>
+<main>
+<section class="hero">
+ <div><div class="eyebrow">Your future starts here</div><h1>Find the support you need to reach your goals.</h1><p>Explore scholarship opportunities, understand basic eligibility, and take the next step toward your education.</p><button class="btn" onclick="document.getElementById('scholarships').scrollIntoView({behavior:'smooth'})">Find scholarships →</button></div>
+ <div class="hero-art"><div class="cap">🎓</div><strong>Learn. Grow. Achieve.</strong><small>Opportunities for every learner</small></div>
+</section>
+<section class="stats" aria-label="Portal highlights"><div class="stat"><b>3+</b><span>Sample opportunities</span></div><div class="stat"><b>3 steps</b><span>Simple application guide</span></div><div class="stat"><b>Free</b><span>To explore this demo</span></div></section>
+<section id="scholarships">
+ <div class="section-head"><div><h2>Explore scholarships</h2><p>Search the sample opportunities listed below.</p></div></div>
+ <div class="filters"><input id="search" class="search" placeholder="Search by scholarship name..." aria-label="Search scholarships"><select id="category" class="filter" aria-label="Filter by category"><option value="all">All categories</option><option value="merit">Merit-based</option><option value="need">Need-based</option><option value="general">General</option></select></div>
+ <div class="cards" id="cards">
+  <article class="card" data-category="merit" data-name="National Merit Scholarship"><span class="tag">MERIT-BASED</span><h3>National Merit Scholarship</h3><p>Sample listing for students with strong academic performance. Check the official scheme rules before applying.</p><div class="meta"><span>Eligibility: Academic merit</span><span>Deadline: Verify</span></div><button class="btn apply" onclick="openApply('National Merit Scholarship')">View / Apply</button></article>
+  <article class="card" data-category="need" data-name="Student Support Scholarship"><span class="tag">NEED-BASED</span><h3>Student Support Scholarship</h3><p>Sample listing designed to represent financial-support scholarships for eligible students.</p><div class="meta"><span>Eligibility: Scheme-specific</span><span>Deadline: Verify</span></div><button class="btn apply" onclick="openApply('Student Support Scholarship')">View / Apply</button></article>
+  <article class="card" data-category="general" data-name="Higher Education Opportunity Grant"><span class="tag">GENERAL</span><h3>Higher Education Opportunity Grant</h3><p>Sample listing for learners continuing higher education. Requirements vary by provider and year.</p><div class="meta"><span>Eligibility: Check rules</span><span>Deadline: Verify</span></div><button class="btn apply" onclick="openApply('Higher Education Opportunity Grant')">View / Apply</button></article>
+ </div>
+</section>
+<section class="info" id="how"><h2>How it works</h2><div class="steps"><div class="step"><b>1. Explore</b><p>Browse opportunities and read their eligibility conditions carefully.</p></div><div class="step"><b>2. Prepare</b><p>Collect the documents requested on the official scholarship website.</p></div><div class="step"><b>3. Apply officially</b><p>Submit your application through the verified government or provider portal.</p></div></div></section>
+<section class="info" id="about"><h2>About ScholarBridge</h2><p style="color:var(--muted);line-height:1.65;margin-bottom:0">ScholarBridge is a student project concept for a Scholarship Management System. This front-end demo helps students explore sample opportunities. The listings are examples, not verified active scholarships, and this website does not submit real applications.</p></section>
+</main>
+<footer>© 2026 ScholarBridge · Student project demo · Always verify details on official scholarship portals.</footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog"><h2 id="dialogTitle">Scholarship details</h2><p id="selectedName"></p><p>This is a front-end demonstration. It does not send or store your information. Do not enter real personal or financial details.</p><label for="studentName">Demo student name</label><input id="studentName" placeholder="Enter a sample name"><label for="course">Course / class</label><input id="course" placeholder="e.g. B.Sc. Computer Science"><div class="actions"><button class="btn" onclick="demoSubmit()">Continue (demo)</button><button class="btn secondary" onclick="closeApply()">Close</button></div><div id="notice">Demo only: no application was submitted and no information was saved.</div></div></div>
+<script>
+const search=document.getElementById('search'),category=document.getElementById('category');
+function filterCards(){const q=search.value.toLowerCase(),c=category.value;let shown=0;document.querySelectorAll('.card').forEach(card=>{const ok=card.dataset.name.toLowerCase().includes(q)&&(c==='all'||card.dataset.category===c);card.style.display=ok?'flex':'none';if(ok)shown++});let empty=document.getElementById('empty');if(!shown){if(!empty){empty=document.createElement('div');empty.id='empty';empty.className='empty';empty.textContent='No matching scholarships found. Try another search.';document.getElementById('cards').appendChild(empty)}}else if(empty)empty.remove()}
+search.addEventListener('input',filterCards);category.addEventListener('change',filterCards);
+function openApply(name){document.getElementById('selectedName').textContent='Selected: '+name;document.getElementById('notice').style.display='none';document.getElementById('modal').classList.add('show')}
+function closeApply(){document.getElementById('modal').classList.remove('show')}
+function demoSubmit(){document.getElementById('notice').style.display='block'}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeApply()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeApply()});
+</script>
+</body></html>
